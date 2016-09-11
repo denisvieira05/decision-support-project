@@ -1,0 +1,7 @@
+# Specifies Client
+
+/node_modules
+/bower_components
+/src/lib
+/dist
+/public
