@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": git@github.com:fromdenisvieira/decision-support-project.git"
+    "url": "git@github.com:fromdenisvieira/decision-support-project.git"
   },
   "author": "Denis Vieira <denisvieira05@gmail.com>",
   "license": "ISC",
