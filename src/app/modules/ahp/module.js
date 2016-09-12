@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('proint2.ahp', ['ui.router'])
+        .module('proint2.ahp', ['ui.router','angular-steps'])
         .config(config);
 
 

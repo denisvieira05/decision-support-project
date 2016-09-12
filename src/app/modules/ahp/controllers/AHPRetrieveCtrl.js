@@ -1,6 +1,8 @@
 (function () {
     'use strict';
-    angular.module('proint2.ahp').controller('AHPRetrieveCtrl', AHPRetrieveCtrl);
+    angular.module('proint2.ahp')
+    .controller('AHPRetrieveCtrl', AHPRetrieveCtrl);
+
 
     AHPRetrieveCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS','$stateParams'];
 
@@ -11,6 +13,9 @@
         vm.disciplines = [];
         vm.selectedDisciplines = [];
         vm.patientId = $stateParams.id;
+
+        $scope.criterioCount = 0;
+        $scope.alternativeCount = 0;
 
 
         vm.createPatient = createPatient;

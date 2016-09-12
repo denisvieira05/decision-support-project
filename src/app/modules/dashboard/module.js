@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('proint2.dashboard', ['ui.router'])
+        .module('proint2.dashboard', ['ui.router','ngAnimate'])
         .config(config);
 
 
@@ -19,12 +19,6 @@
             url: '/dashboard',
             templateUrl: modulePath+'index.html',
             controller: 'DashboardRetrieveCtrl',
-            controllerAs: 'vm'
-          })
-          .state('dashboard.invoices', {
-            url: '/invoices/:id',
-            templateUrl: modulePath+'invoices.html',
-            controller: 'PatientInvoicesCtrl',
             controllerAs: 'vm'
           });
     }

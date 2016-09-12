@@ -1,13 +1,60 @@
 <div class="container">
       <br><br>
-      <h1 class="header center orange-text">AHP</h1>
+      <steps>
 
-      <div class="row center">
-        <button id="download-button" class="btn-large waves-effect waves-light orange">INICIAR</button>
-      </div>
-      <div class="row center">
-        <h5 class="header col s12 light">O Analytic Hierarchy Process (AHP) é um método para auxiliar as pessoas na tomada de decisões complexas. Mais do que determinar qual a decisão correta, o AHP ajuda as pessoas a escolher e a justificar a sua escolha.</h5>
-      </div>
+          <step>
+              <h1 class="header center orange-text">AHP</h1>
+
+              <div class="row center">
+                <button step-next class="btn-large waves-effect waves-light orange">INICIAR</button>
+              </div>
+              <div class="row center">
+                <h5 class="header col s12 light">O Analytic Hierarchy Process (AHP) é um método para auxiliar as pessoas na tomada de decisões complexas. Mais do que determinar qual a decisão correta, o AHP ajuda as pessoas a escolher e a justificar a sua escolha.</h5>
+              </div>
+          </step>
+
+          <step>
+              <div class="row">
+                  <ng-include class="col s12 m12 l12"src="'app/modules/ahp/views/step1.html'"></ng-include>
+              </div>
+
+
+              <button class="btn waves-effect waves-light left" step-previous>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                VOLTAR
+              </button>
+
+              <button class="btn waves-effect waves-light right" step-next>SEGUIR
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+          </step>
+
+          <step>
+              <ng-include src="'app/modules/ahp/views/step2.html'"></ng-include>
+
+              <button class="btn waves-effect waves-light left" step-previous>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                VOLTAR
+              </button>
+
+              <button class="btn waves-effect waves-light right" step-next>SEGUIR
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+          </step>
+
+          <step>
+              <div ng-include="'app/modules/ahp/views/step3.html'"></div>
+
+              <button class="btn waves-effect waves-light left" step-previous>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                VOLTAR
+              </button>
+
+              <button class="btn waves-effect waves-light right" step-next>SEGUIR
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+          </step>
+
+      </steps>
       <br><br>
-
 </div>

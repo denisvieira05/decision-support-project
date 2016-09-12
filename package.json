@@ -1,7 +1,7 @@
 {
-  "name": "test-bluevox",
+  "name": "decision-support-project",
   "version": "1.0.0",
-  "description": "Test for work in company .",
+  "description": "Methods to assist people in making complex decisions .",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fromdenisvieira/test-bluevox.git"
+    "url": git@github.com:fromdenisvieira/decision-support-project.git"
   },
   "author": "Denis Vieira <denisvieira05@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fromdenisvieira/test-bluevox/issues"
+    "url": "https://github.com/fromdenisvieira/decision-support-project/issues"
   },
-  "homepage": "https://github.com/fromdenisvieira/test-bluevox#readme",
+  "homepage": "https://github.com/fromdenisvieira/decision-support-project",
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.0",
