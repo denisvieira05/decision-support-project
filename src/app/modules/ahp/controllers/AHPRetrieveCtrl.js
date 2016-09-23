@@ -7,20 +7,9 @@
     AHPRetrieveCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS','$stateParams'];
 
     function AHPRetrieveCtrl($scope, $rootScope, $location, APP_SETTING,$stateParams) {
-
         var vm = this;
 
-        vm.disciplines = [];
-        vm.selectedDisciplines = [];
-        vm.patientId = $stateParams.id;
-
-        $scope.criterioCount = 0;
-        $scope.alternativeCount = 0;
-
-
-        vm.createPatient = createPatient;
         vm.returnRoute = returnRoute;
-        // vm.getGrid = getGrid;
 
         // activate();
 
@@ -30,8 +19,6 @@
             });
         }
 
-        // vm.disciplines = DisciplinesPrepService.disciplinas;
-        // console.log(vm.disciplines);
         //////////////////////////////////////////////////////////
 
         function returnRoute(){
@@ -59,9 +46,6 @@
                 alert('erro');
             });
         }
-
-       $('.collapsible').collapsible({});
-       $('.modal-trigger').leanModal({});
 
     }
 })();

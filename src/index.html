@@ -50,7 +50,7 @@
           </a>
           <ul class="right hide-on-med-and-down">
               <li><a ng-href="#/" class="black-text">DASHBOARD</a></li>
-              <li><a ng-href="#/ahp" class="black-text">AHP</a></li>
+              <li><a ng-href="#/ahp/intro" class="black-text">AHP</a></li>
               <li><a href="https://github.com/fromdenisvieira/decision-support-project" target="_blank"><i class="fa fa-github black-text"></i></a></li>
           </ul>
         </div>
@@ -65,7 +65,7 @@
     <script src="./lib/Materialize/dist/js/materialize.min.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <!-- <script src="./lib/angular-filter/dist/angular-filter.min.js"></script> -->
-    <!-- <script src="./lib/angular-local-storage/dist/angular-local-storage.min.js"></script> -->
+    <script src="./lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="./lib/angular-materialize/src/angular-materialize.js"></script>
     <!-- <script src="./lib/angular-animate/angular-animate.min.js"> -->
     <script src="./lib/angular-steps/dist/angular-steps.js"></script>
@@ -76,11 +76,17 @@
     <script src="app/config.js"></script>
     <script src="app/init.js"></script>
 
+    <script src="app/services/ahp/AlternativeService.js"></script>
+    <script src="app/services/ahp/CriterionService.js"></script>
+
     <script src="app/modules/dashboard/module.js"></script>
     <script src="app/modules/dashboard/controllers/DashboardRetrieveCtrl.js"></script>
 
     <script src="app/modules/ahp/module.js"></script>
     <script src="app/modules/ahp/controllers/AHPRetrieveCtrl.js"></script>
+    <script src="app/modules/ahp/controllers/Step1RetrieveCtrl.js"></script>
+    <script src="app/modules/ahp/controllers/Step2RetrieveCtrl.js"></script>
+    <script src="app/modules/ahp/controllers/Step3RetrieveCtrl.js"></script>
 
     <script src="app/components/criterioItem.js"></script>
     <script src="app/components/alternativeItem.js"></script>

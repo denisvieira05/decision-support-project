@@ -8,7 +8,8 @@
         'proint2.ahp',
 
         // External Dependencies
-        'ui.router'
+        'ui.router',
+        'LocalStorageModule'
     ])
     .config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 

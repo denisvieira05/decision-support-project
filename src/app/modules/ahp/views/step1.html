@@ -1,63 +1,104 @@
-<div class="container">
-      <br><br>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s12">
-              <input value="Identificar causa e falha em sistemas eletricos" type="text">
-              <label for="textarea1" class="active">Descreva seu problema</label>
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Identificar causa e falha em sistemas eletricos" type="text" ng-model="problemDescription" onChange="vm.update(problemDescription)">
+        <label for="textarea1" class="active">Descreva seu problema</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6">
+
+          <ul class="collection with-header">
+            <li class="collection-header center"><h5>ADICIONE SEUS CRITÉRIOS</h5></li>
+            <li class="collection-item hoverable" ng-repeat="criterion in vm.criterions">
+              <div>
+                {{criterion.text}}
+                <a href="#!" class="secondary-content" >
+                  <i class="fa fa-trash-o text-red" aria-hidden="true"></i>
+                </a>
+                <a href="#!" class="secondary-content" style="margin-right:1.5em;">
+                  <i class="fa fa-pencil text-blue" aria-hidden="true" ></i>
+                </a>
+              </div>
+            </li>
+            </li>
+          </ul>
+
+          <div class="input-field col s12 center">
+            <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#criterionModal"><i class="material-icons">add</i></a>
+          </div>
+
+          <!-- Modal Structure -->
+          <div id="criterionModal" class="modal" style="z-index:1005; max-width: 25em;">
+            <div class="modal-content">
+              <h4>Adicionar Critério</h4>
+              <form class="col s12" ng-submit="vm.addCriterion(vm.newCriterions)">
+                   <div class="row">
+                     <div class="input-field col s12">
+                       <input id="newCriterion" type="text" class="validate" ng-model="vm.newCriterion.text">
+                       <label for="newCriterion">Nome do Critério</label>
+                     </div>
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" ng-click="vm.addCriterion(vm.newCriterion)" class="modal-action modal-close waves-effect waves-green btn-flat">Adicionar</button>
+                     <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</button>
+                   </div>
+             </form>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col s6">
-                <span>Adicione seus critérios</span>
-                <div class="input-field col s12">
-                  <input type="text" >
-                  <label for="first_name2">Critério 1</label>
-                </div>
-                <div class="input-field col s12">
-                  <input type="text" class="validate">
-                  <label for="first_name2">Critério 2</label>
-                </div>
-                <div class="input-field col s12">
-                  <input type="text" class="validate">
-                  <label for="first_name2">Critério 3</label>
-                </div>
-                <div class="input-field col s12">
-                  <input type="text" class="validate">
-                  <label for="first_name2">Critério 4</label>
-                </div>
-                <!-- <div class="input-field col s12 center">
-                  <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-                </div> -->
-
-            </div>
-
-            <div class="col s6">
-              <span>Adicione suas alternativas</span>
-              <div class="input-field col s12">
-                <input type="text" class="validate">
-                <label for="first_name2">Alternativa 1</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="text" class="validate">
-                <label for="first_name2">Alternativa 2</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="text" class="validate">
-                <label for="first_name2">Alternativa 3</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="text" class="validate">
-                <label for="first_name2">Alternativa 4</label>
-              </div>
-              <!-- <div class="input-field col s12 center">
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-              </div> -->
-            </div>
-          </div>
-        </form>
       </div>
 
+      <div class="col s6">
+        <ul class="collection with-header">
+          <li class="collection-header center"><h5>ADICIONE SUAS ALTERNATIVAS</h5></li>
+          <li class="collection-item hoverable" ng-repeat="alternative in vm.alternatives">
+            <div>
+              {{alternative.text}}
+              <a href="#!" class="secondary-content" >
+                <i class="fa fa-trash-o text-red" aria-hidden="true"></i>
+              </a>
+              <a href="#!" class="secondary-content" style="margin-right:1.5em;">
+                <i class="fa fa-pencil text-blue" aria-hidden="true" ></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="input-field col s12 center">
+          <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#alternativeModal"><i class="material-icons">add</i></a>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="alternativeModal" class="modal" style="z-index:1005; max-width: 25em;">
+          <div class="modal-content">
+            <h4>Adicionar Alternativa</h4>
+            <form class="col s12" ng-submit="vm.addAlternative(vm.newAlternative)">
+                 <div class="row">
+                   <div class="input-field col s12">
+                     <input id="newAlternative" type="text" class="validate" ng-model="vm.newAlternative.text">
+                     <label for="newAlternative">Nome da Alternativa</label>
+                   </div>
+                 </div>
+                 <div class="modal-footer">
+                   <button type="button" ng-click="vm.addAlternative(vm.newAlternative)" class="modal-action modal-close waves-effect waves-green btn-flat">Adicionar</button>
+                   <button href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</button>
+                 </div>
+           </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
+
+<a class="btn waves-effect waves-light left" ng-href="#/ahp/step/1">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  VOLTAR
+</a>
+
+<a class="btn waves-effect waves-light right" ng-href="#/ahp/step/2">SEGUIR
+  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</a>
