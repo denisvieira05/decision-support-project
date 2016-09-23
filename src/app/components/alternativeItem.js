@@ -12,7 +12,7 @@
                    element.bind("click", function(e){
                    scope.alternativeCount++;
                    var container =   angular.element(document.querySelector("#alternativesList"));
-                   var childNode = $compile('<div class="input-field col s12 m12 l12"><input id="alternative'+scope.count+'" type="text" class="validate"><label class="active" for="alternative'+scope.count+'">Alternativa '+scope.count+' </label></div>')(container);
+                   var childNode = $compile('<div class="input-field col s12 m12 l12"><input id="alternative'+scope.alternativeCount+'" type="text" class="validate"><label class="active" for="alternative'+scope.alternativeCount+'">Alternativa '+scope.alternativeCount+' </label></div>')(container);
                    container.append(childNode);
 
                    });
