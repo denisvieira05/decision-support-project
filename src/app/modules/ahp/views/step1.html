@@ -49,15 +49,15 @@
         <div id="editAlternativeModal" class="modal" style="z-index:1005; max-width: 25em;">
           <div class="modal-content">
             <h4>Editar Alternativa</h4>
-            <form class="col s12" ng-submit="vm.addAlternative(vm.newAlternative)">
+            <form class="col s12" ng-submit="vm.editAlternative(vm.alternativeToEdit)">
                  <div class="row">
                    <div class="input-field col s12">
-                     <input id="editAlternative" type="text" class="validate" ng-value="vm.alternativeToEdit.text">
+                     <input id="editAlternative" type="text" class="validate" ng-model="vm.alternativeToEdit.text">
                      <label class="active" for="editAlternative">Nome da Alternativa</label>
                    </div>
                  </div>
                  <div class="modal-footer">
-                   <button type="button" ng-click="vm.addAlternative(vm.newAlternative)" class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</button>
+                   <button type="button" ng-click="vm.editAlternative(vm.alternativeToEdit)" class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</button>
                    <button type="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</button>
                  </div>
            </form>
@@ -106,7 +106,7 @@
           <div id="editCriterionModal" class="modal" style="z-index:1005; max-width: 25em;">
             <div class="modal-content">
               <h4>Editar Critério</h4>
-              <form class="col s12" ng-submit="vm.addCriterion(vm.newCriterions)">
+              <form class="col s12" ng-submit="vm.editCriterion(vm.criterionToEdit)">
                    <div class="row">
                      <div class="input-field col s12">
                        <input id="editCriterion" type="text" class="validate" ng-model="vm.criterionToEdit.text">
@@ -114,7 +114,7 @@
                      </div>
                    </div>
                    <div class="modal-footer">
-                     <button type="button" ng-click="vm.addCriterion(vm.newCriterion)" class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</button>
+                     <button type="button" ng-click="vm.editCriterion(vm.criterionToEdit)" class="modal-action modal-close waves-effect waves-green btn-flat">Salvar</button>
                      <button type="button" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</button>
                    </div>
              </form>
@@ -128,7 +128,7 @@
   </form>
 </div>
 
-<a class="btn waves-effect waves-light left" ng-href="#/ahp/step/1">
+<a class="btn waves-effect waves-light left" ng-href="#/ahp/intro">
   <i class="fa fa-arrow-left" aria-hidden="true"></i>
   VOLTAR
 </a>

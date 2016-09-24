@@ -75,14 +75,21 @@
 
 		}
 
-		function edit(id){
+		function edit(item){
 				var retorno = $q.defer();
+				itemList		= localStorageService.get('criterionsList');
 
-					retorno.resolve(result);
+				for (var i in itemList) {
+					if (itemList[i].id == item.id) {
+						 itemList[i].text = item.text;
+						 retorno.resolve(i);
+						 break;
+					}
+				}
 
+				localStorageService.set("criterionsList",itemList);
 
 				return retorno.promise;
-
 		}
 
     function remove(item){

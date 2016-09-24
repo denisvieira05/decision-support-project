@@ -46,26 +46,19 @@
 
        function getAlternative(alternative){
             $('#editAlternativeModal').openModal();
-            vm.alternativeToEdit = alternative;
+            var alternativeObjToEdit =  { id: alternative.id, text: alternative.text };
+            vm.alternativeToEdit = alternativeObjToEdit;
         }
 
        function getCriterion(criterion){
             $('#editCriterionModal').openModal();
-            vm.criterionToEdit = criterion;
+            var criterionObjToEdit =  { id: criterion.id, text: criterion.text };
+            vm.criterionToEdit = criterionObjToEdit;
         }
 
        function getAlternatives(){
             return AlternativeService.listar().then(function(data){
                 vm.alternatives = data;
-            },
-            function(){
-                alert('erro');
-            });
-        }
-
-       function getCriterion(){
-            return CriterionService.listar().then(function(data){
-                vm.criterions = data;
             },
             function(){
                 alert('erro');
@@ -92,6 +85,16 @@
             });
         }
 
+        function editAlternative(alternative){
+            return AlternativeService.edit(alternative).then(function(indexToUpdate){
+                vm.alternatives[indexToUpdate] = alternative;
+                Materialize.toast('Alternativa Editada !', 2000, 'rounded');
+            },
+            function(){
+                alert('erro');
+            });
+        }
+
         function removeAlternative(alternative){
             return AlternativeService.remove(alternative).then(function(data){
                 var index = vm.alternatives.indexOf(alternative);
@@ -103,22 +106,32 @@
             });
         }
 
-        function removeCriterion(criterion){
-            return CriterionService.remove(criterion).then(function(data){
-                var index = vm.criterions.indexOf(criterion);
-                vm.criterions.splice(index, 1);
-                Materialize.toast('Critério Removido !', 2000, 'rounded');
+        function addCriterion(criterion){
+            return CriterionService.add(criterion).then(function(data){
+                vm.newCriterion = "";
+                vm.criterions.push(data);
+                Materialize.toast('Critério Criado !', 2000, 'rounded');
             },
             function(){
                 alert('erro');
             });
         }
 
-        function addCriterion(criterion){
-            return CriterionService.add(criterion).then(function(data){
-                vm.newCriterion = "";
-                vm.criterions.push(data);
-                Materialize.toast('Critério Criado !', 2000, 'rounded');
+        function editCriterion(criterion){
+            return CriterionService.edit(criterion).then(function(indexToUpdate){
+                vm.criterions[indexToUpdate] = criterion;
+                Materialize.toast('Critério Editado !', 2000, 'rounded');
+            },
+            function(){
+                alert('erro');
+            });
+        }
+
+        function removeCriterion(criterion){
+            return CriterionService.remove(criterion).then(function(data){
+                var index = vm.criterions.indexOf(criterion);
+                vm.criterions.splice(index, 1);
+                Materialize.toast('Critério Removido !', 2000, 'rounded');
             },
             function(){
                 alert('erro');

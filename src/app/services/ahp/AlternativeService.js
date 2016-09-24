@@ -81,22 +81,18 @@
 		}
 
 		function edit(item){
-
 				var retorno = $q.defer();
+				itemList		= localStorageService.get('alternativesList');
 
-				itemList = localStorageService.get('alternativesList');
-
-				var itemToUpdate;
-
-				for(var i = itemList.length-1; i--;){
-					if (itemList[i].id === item.id){
-						indexToUpdate = i;
-						itemList[i].text = item.text;
+				for (var i in itemList) {
+					if (itemList[i].id == item.id) {
+						 itemList[i].text = item.text;
+						 retorno.resolve(i);
+						 break;
 					}
 				}
 
-				retorno.resolve(indexToUpdate);
-
+				localStorageService.set("alternativesList",itemList);
 
 				return retorno.promise;
 
@@ -104,8 +100,7 @@
 
     function remove(item){
       var retorno = $q.defer();
-
-			itemList = localStorageService.get('alternativesList');
+			itemList 		= localStorageService.get('alternativesList');
 
 			for(var i = itemList.length-1; i--;){
 				if (itemList[i].id === item.id){
