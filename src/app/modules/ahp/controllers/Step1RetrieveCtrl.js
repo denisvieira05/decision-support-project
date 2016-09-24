@@ -12,9 +12,15 @@
         $scope.alternativeCount = 0;
         $scope.unbind           = localStorageService.bind($scope, 'problemDescription');
 
-        vm.addAlternative = addAlternative;
-        vm.addCriterion   = addCriterion;
-        vm.update = updateProblemDescription;
+        vm.addAlternative    = addAlternative;
+        vm.removeAlternative = removeAlternative;
+        vm.editAlternative   = editAlternative;
+        vm.getAlternative    = getAlternative;
+        vm.addCriterion      = addCriterion;
+        vm.removeCriterion   = removeCriterion;
+        vm.editCriterion     = editCriterion;
+        vm.update            = updateProblemDescription;
+        vm.getCriterion      = getCriterion;
 
         activate();
 
@@ -38,9 +44,28 @@
           });
         }
 
+       function getAlternative(alternative){
+            $('#editAlternativeModal').openModal();
+            vm.alternativeToEdit = alternative;
+        }
+
+       function getCriterion(criterion){
+            $('#editCriterionModal').openModal();
+            vm.criterionToEdit = criterion;
+        }
+
        function getAlternatives(){
             return AlternativeService.listar().then(function(data){
                 vm.alternatives = data;
+            },
+            function(){
+                alert('erro');
+            });
+        }
+
+       function getCriterion(){
+            return CriterionService.listar().then(function(data){
+                vm.criterions = data;
             },
             function(){
                 alert('erro');
@@ -61,6 +86,28 @@
                 vm.newAlternative = "";
                 vm.alternatives.push(data);
                 Materialize.toast('Alternativa Criada !', 2000, 'rounded');
+            },
+            function(){
+                alert('erro');
+            });
+        }
+
+        function removeAlternative(alternative){
+            return AlternativeService.remove(alternative).then(function(data){
+                var index = vm.alternatives.indexOf(alternative);
+                vm.alternatives.splice(index, 1);
+                Materialize.toast('Alternativa Removida !', 2000, 'rounded');
+            },
+            function(){
+                alert('erro');
+            });
+        }
+
+        function removeCriterion(criterion){
+            return CriterionService.remove(criterion).then(function(data){
+                var index = vm.criterions.indexOf(criterion);
+                vm.criterions.splice(index, 1);
+                Materialize.toast('Critério Removido !', 2000, 'rounded');
             },
             function(){
                 alert('erro');

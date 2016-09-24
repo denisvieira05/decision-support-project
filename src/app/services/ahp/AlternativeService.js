@@ -31,7 +31,7 @@
 			itemList = localStorageService.get("alternativesList");
 
 			if(!itemList){
-					itemList = [{ id: 1, text: "Teste Alternativa" }];
+					// itemList = [{ id: 1, text: "Teste Alternativa" }];
 					localStorageService.set("alternativesList",itemList);
 			}
 
@@ -58,13 +58,21 @@
 		}
 
 
-		function getItemWithId(id){
+		function getItemWithId(item){
 
         var retorno = $q.defer();
 
-        var result = $.grep(alternativesList, function(e){ return e.id == id; });
+				itemList = localStorageService.get('alternativesList');
 
-        retorno.resolve(result);
+				var itemToUpdate;
+
+				for(var i = itemList.length-1; i--;){
+					if (itemList[i].id === item.id){
+						itemToUpdate = itemList[i];
+					}
+				}
+
+        retorno.resolve(itemToUpdate);
 
 
 
@@ -72,22 +80,41 @@
 
 		}
 
-		function edit(id){
+		function edit(item){
 
 				var retorno = $q.defer();
 
-					retorno.resolve(result);
+				itemList = localStorageService.get('alternativesList');
+
+				var itemToUpdate;
+
+				for(var i = itemList.length-1; i--;){
+					if (itemList[i].id === item.id){
+						indexToUpdate = i;
+						itemList[i].text = item.text;
+					}
+				}
+
+				retorno.resolve(indexToUpdate);
 
 
 				return retorno.promise;
 
 		}
 
-    function remove(id){
+    function remove(item){
       var retorno = $q.defer();
 
-        retorno.resolve(id);
+			itemList = localStorageService.get('alternativesList');
 
+			for(var i = itemList.length-1; i--;){
+				if (itemList[i].id === item.id){
+					itemList.splice(i, 1);
+				}
+			}
+
+			localStorageService.set("alternativesList",itemList);
+			retorno.resolve(itemList);
 
       return retorno.promise;
     }

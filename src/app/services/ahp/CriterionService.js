@@ -85,10 +85,19 @@
 
 		}
 
-    function remove(id){
+    function remove(item){
       var retorno = $q.defer();
 
-        retorno.resolve(id);
+			itemList = localStorageService.get('criterionsList');
+
+			for(var i = itemList.length-1; i--;){
+				if (itemList[i].id === item.id){
+					itemList.splice(i, 1);
+				}
+			}
+
+			localStorageService.set("criterionsList",itemList);
+      retorno.resolve(itemList);
 
 
       return retorno.promise;
