@@ -75,20 +75,36 @@
 
 		}
 
-		function edit(id){
+		function edit(item){
 				var retorno = $q.defer();
+				itemList		= localStorageService.get('criterionsList');
 
-					retorno.resolve(result);
+				for (var i in itemList) {
+					if (itemList[i].id == item.id) {
+						 itemList[i].text = item.text;
+						 retorno.resolve(i);
+						 break;
+					}
+				}
 
+				localStorageService.set("criterionsList",itemList);
 
 				return retorno.promise;
-
 		}
 
-    function remove(id){
+    function remove(item){
       var retorno = $q.defer();
 
-        retorno.resolve(id);
+			itemList = localStorageService.get('criterionsList');
+
+			for(var i = itemList.length-1; i--;){
+				if (itemList[i].id === item.id){
+					itemList.splice(i, 1);
+				}
+			}
+
+			localStorageService.set("criterionsList",itemList);
+      retorno.resolve(itemList);
 
 
       return retorno.promise;
