@@ -2,36 +2,57 @@
     'use strict';
     angular.module('proint2.ahp').controller('Step2RetrieveCtrl', Step2RetrieveCtrl);
 
-    Step2RetrieveCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS','$stateParams'];
+    Step2RetrieveCtrl.$inject = ['$scope', '$rootScope', '$location', 'APP_SETTINGS', '$stateParams', 'AlternativeService', 'CriterionService', 'localStorageService'];
 
-    function Step2RetrieveCtrl($scope, $rootScope, $location, APP_SETTING,$stateParams) {
+    function Step2RetrieveCtrl($scope, $rootScope, $location, APP_SETTING,$stateParams, AlternativeService, CriterionService, localStorageService) {
 
         var vm = this;
 
-        vm.disciplines = [];
-        vm.selectedDisciplines = [];
-        vm.patientId = $stateParams.id;
-
-
-        vm.createPatient = createPatient;
-        vm.returnRoute = returnRoute;
-        // vm.getGrid = getGrid;
-
-        // activate();
+        activate();
 
         function activate() {
-            return getPatients().then(function() {
-                // console.log('Activated Patients View');
+            getAlternatives().then(function() {
+                // console.log('Activated Alternatives View');
+            });
+            getCriterions().then(function() {
+                // console.log('Activated Criterions View');
             });
         }
 
-        // vm.disciplines = DisciplinesPrepService.disciplinas;
-        // console.log(vm.disciplines);
         //////////////////////////////////////////////////////////
 
-        function returnRoute(){
-            $location.path("/dashboard");
-        }
+        function getAlternatives(){
+             return AlternativeService.listar().then(function(data){
+                 vm.alternatives = data;
+             },
+             function(){
+                 alert('erro');
+             });
+         }
+
+        function getCriterions(){
+             return CriterionService.listar().then(function(data){
+                 vm.criterions = data;
+             },
+             function(){
+                 alert('erro');
+             });
+         }
+
+         function gerarAlternativas(){
+
+            vm.alternativesToCompare = [];
+
+            for (var i = 0; i < vm.alternatives.length; i++) {
+              [{
+                id: 1,
+                alternative1: vm.alternatives[i],
+                alternative2: vm.alternatives[i+1]
+               }]
+            }
+
+            vm.alternatives
+         }
 
 
     }
