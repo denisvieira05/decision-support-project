@@ -31,7 +31,6 @@
 			itemList = localStorageService.get("alternativesList");
 
 			if(!itemList){
-					// itemList = [{ id: 1, text: "Teste Alternativa" }];
 					localStorageService.set("alternativesList",itemList);
 			}
 
@@ -44,12 +43,17 @@
 		function add(item){
 
 				var retorno = $q.defer();
-        var newId   = itemList.length+1;
-
-        var itemToAdd = { id: newId, text: item.text };
 
 				itemList = localStorageService.get('alternativesList');
-        itemList.push(itemToAdd);
+
+				if(!itemList){
+					itemList = [{ id: 1, text: item.text }];
+				}else{
+					var newId   = itemList.length+1;
+					var itemToAdd = { id: newId, text: item.text };
+					itemList.push(itemToAdd);
+				}
+
 				localStorageService.set("alternativesList",itemList);
 
 				retorno.resolve(itemToAdd);
@@ -84,7 +88,7 @@
 				var retorno = $q.defer();
 				itemList		= localStorageService.get('alternativesList');
 
-				for (var i in itemList) {
+				for (var i = 0; i < itemList.length; i++) {
 					if (itemList[i].id == item.id) {
 						 itemList[i].text = item.text;
 						 retorno.resolve(i);
@@ -102,14 +106,15 @@
       var retorno = $q.defer();
 			itemList 		= localStorageService.get('alternativesList');
 
-			for(var i = itemList.length-1; i--;){
+			for (var i = 0; i < itemList.length; i++) {
 				if (itemList[i].id === item.id){
+					console.log("index removed",i);
 					itemList.splice(i, 1);
 				}
 			}
 
 			localStorageService.set("alternativesList",itemList);
-			retorno.resolve(itemList);
+			retorno.resolve(item);
 
       return retorno.promise;
     }
