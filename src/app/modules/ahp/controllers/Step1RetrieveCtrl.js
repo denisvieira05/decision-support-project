@@ -80,8 +80,14 @@
         function addAlternative(alternative){
             return AlternativeService.add(alternative).then(function(data){
                 vm.newAlternative = "";
-                vm.alternatives.push(data);
-                Materialize.toast('Alternativa Criada !', 2000, 'rounded');
+
+                if(data === null){
+                  Materialize.toast('Infelizmente nesta versão só é possível adicionar no máximo 3 alternativas .', 4000, 'rounded');
+                }else{
+                  vm.alternatives.push(data);
+                  Materialize.toast('Alternativa Criada !', 2000, 'rounded');
+                }
+
             },
             function(){
                 alert('erro');

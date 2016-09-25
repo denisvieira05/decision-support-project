@@ -2,90 +2,65 @@
   <div class="col s12">
     <h4 class="center orange-text"> Construção das matrizes de preferência para cada critério</h4>
 
-      <h5 class="center header col s12 light">Compare os graus de intensidade dos seus criterios .</h5>
+      <h5 class="center header col s12 light">Compare as suas alternativas de acordo com criterios .</h5>
   </div>
 
 </div>
 
-<div class="row center">
-  <div class="col l1">
-    <span>Criterio 1</span>
-  </div>
+<br><br>
 
-  <div class="col l10">
+<div class="row center" ng-repeat="criterion in vm.criterions">
+    <div class="row center">
+      <div class="col s12">
+          <span  class="card-panel teal lighten-2 white-text" >{{ criterion.text }}</span>
+      </div>
+    </div>
+    <br/><br/>
+    <div class="row center" ng-repeat="alternative in vm.alternatives">
+      <div class="col l3">
+        <span class="right">{{ alternative.text }}</span>
+      </div>
+      <div class="col l6">
+        <label for="test9">9</label>
+        <input name="group1" type="radio" id="test9" />
 
-    <input name="group1" type="radio" id="test9" />
-    <label for="test9">9</label>
+        <label for="test7">7</label>
+        <input name="group1" type="radio" id="test7" />
 
-    <input name="group1" type="radio" id="test7" />
-    <label for="test7">7</label>
+        <label for="test1">5</label>
+        <input name="group1" type="radio" id="test1" />
 
-    <input name="group1" type="radio" id="test1" />
-    <label for="test1">5</label>
+        <label for="test3">3</label>
+        <input name="group1" type="radio" id="test3" />
 
-    <input name="group1" type="radio" id="test3" />
-    <label for="test3">3</label>
+        <input name="group1" type="radio" id="test5" />
+        <label for="test5">1</label>
 
-    <input name="group1" type="radio" id="test5" />
-    <label for="test5">1</label>
+        <input name="group1" type="radio" id="test1-3" />
+        <label for="test1-3">3</label>
 
-    <input name="group1" type="radio" id="test1-3" />
-    <label for="test1-3">3</label>
+        <input name="group1" type="radio" id="test1-5" />
+        <label for="test1-5">5</label>
 
-    <input name="group1" type="radio" id="test1-5" />
-    <label for="test1-5">5</label>
+        <input name="group1" type="radio" id="test1-7" />
+        <label for="test1-7">7</label>
 
-    <input name="group1" type="radio" id="test1-7" />
-    <label for="test1-7">7</label>
+        <input name="group1" type="radio" id="test1-9" />
+        <label for="test1-9">9</label>
+      </div>
 
-    <input name="group1" type="radio" id="test1-9" />
-    <label for="test1-9">9</label>
-  </div>
+      <div class="col l3" ng-show="$index != vm.alternatives.length-1">
+        <span class="left">{{ vm.alternatives[$index + 1].text }}</span>
+      </div>
 
-  <div class="col l1">
-    <span>Criterio 2</span>
-  </div>
+      <div class="col l3" ng-show="$index == vm.alternatives.length-1">
+        <span class="left">{{ vm.alternatives[0].text }}</span>
+      </div>
+    </div>
 </div>
 
-<div class="row center">
-  <div class="col l1">
-    <span>Criterio 3</span>
-  </div>
 
-  <div class="col l10">
 
-    <input name="group2" type="radio" id="2test9" />
-    <label for="2test9">9</label>
-
-    <input name="group2" type="radio" id="2test7" />
-    <label for="2test7">7</label>
-
-    <input name="group2" type="radio" id="2test1" />
-    <label for="2test1">5</label>
-
-    <input name="group2" type="radio" id="2test3" />
-    <label for="2test3">3</label>
-
-    <input name="group2" type="radio" id="2test5" />
-    <label for="2test5">1</label>
-
-    <input name="group2" type="radio" id="2test1-3" />
-    <label for="2test1-3">3</label>
-
-    <input name="group2" type="radio" id="2test1-5" />
-    <label for="2test1-5">5</label>
-
-    <input name="group2" type="radio" id="2test1-7" />
-    <label for="2test1-7">7</label>
-
-    <input name="group2" type="radio" id="2test1-9" />
-    <label for="2test1-9">9</label>
-  </div>
-
-  <div class="col l1">
-    <span>Criterio 4</span>
-  </div>
-</div>
 
 <a class="btn waves-effect waves-light left" ng-href="#/ahp/step/1">
   <i class="fa fa-arrow-left" aria-hidden="true"></i>
