@@ -12,6 +12,9 @@
         $scope.alternativeCount = 0;
         $scope.unbind           = localStorageService.bind($scope, 'problemDescription');
 
+        vm.alternatives = [];
+        vm.criterions = [];
+
         vm.addAlternative    = addAlternative;
         vm.removeAlternative = removeAlternative;
         vm.editAlternative   = editAlternative;
@@ -87,6 +90,7 @@
 
         function editAlternative(alternative){
             return AlternativeService.edit(alternative).then(function(indexToUpdate){
+              console.log("indexToUpdate".indexToUpdate);
                 vm.alternatives[indexToUpdate] = alternative;
                 Materialize.toast('Alternativa Editada !', 2000, 'rounded');
             },
