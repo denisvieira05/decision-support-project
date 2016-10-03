@@ -48,6 +48,7 @@
 
 				if(!itemList){
 					itemList = [{ id: 1, text: item.text }];
+					localStorageService.set("alternativesList",itemList);
 				}else{
 					if(itemList.length == 3){
 						// alert("Infelizmente nesta versão só é possível adicionar no máximo 3 alternativas .");
@@ -56,10 +57,12 @@
 						var newId   = itemList.length+1;
 						var itemToAdd = { id: newId, text: item.text };
 						itemList.push(itemToAdd);
-						localStorageService.set("alternativesList",itemList);
 						retorno.resolve(itemToAdd);
+						localStorageService.set("alternativesList",itemList);
 					}
 				}
+				
+				
 
 
 				return retorno.promise;
